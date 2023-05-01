@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    Rigidbody movementRigidBody;
+    // PARAMETERS - for tuning, typically set in editor
+    // CACHE - e.g. references for readability and speed
+    // STATE - private instance(member) variables
     [SerializeField] float _thrust = 1000.0f;
     [SerializeField] float _rotation = 100.0f;
-    // Start is called before the first frame update
+    [SerializeField] AudioClip _mainEngine;
+
+    Rigidbody _movementRigidBody;
+    AudioSource _audio;
+
     void Start()
     {
-        movementRigidBody = GetComponent<Rigidbody>();
+        _movementRigidBody = GetComponent<Rigidbody>();
+        _audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,7 +31,15 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            movementRigidBody.AddRelativeForce(Vector3.up * _thrust * Time.deltaTime);
+            _movementRigidBody.AddRelativeForce(Vector3.up * _thrust * Time.deltaTime);
+            if (!_audio.isPlaying)
+            {
+                _audio.PlayOneShot(_mainEngine);
+            }
+        }
+        else
+        {
+            _audio.Stop();
         }
     }
     void ProcessRotation()
@@ -43,9 +58,9 @@ public class Movement : MonoBehaviour
     {
         // This stops the player from rotating so we can
         // manually rotate
-        movementRigidBody.freezeRotation = true;
+        _movementRigidBody.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
-        movementRigidBody.freezeRotation = false;
+        _movementRigidBody.freezeRotation = false;
     }
 
 

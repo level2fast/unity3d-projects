@@ -11,14 +11,30 @@ public class CollisionHandler : MonoBehaviour
 
     AudioSource _audio;
     bool _isTransitioning = false; // represents state between collided and collision
+    bool _disableCollisions = false; // stops all collisions from happening
+
+    void Update()
+    {
+        DebugKeyActions();
+    }
+    void DebugKeyActions()
+    {
+        if (Input.GetKey(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if (Input.GetKey(KeyCode.C))
+        {
+            _disableCollisions = !_disableCollisions; // toggle collisions
+        }
+    }
     void Start()
     {
         _audio = GetComponent<AudioSource>();
     }
-
     private void OnCollisionEnter(Collision other)
     {
-        if (_isTransitioning)
+        if (_isTransitioning || _disableCollisions)
             return;
 
         switch (other.gameObject.tag)
@@ -38,7 +54,6 @@ public class CollisionHandler : MonoBehaviour
                 break;
         }
     }
-
     void StartSuccessSequence()
     {
         _isTransitioning = true;
@@ -51,7 +66,6 @@ public class CollisionHandler : MonoBehaviour
         Invoke("LoadNextLevel", _levelLoadDelay);
 
     }
-
     void StartCrashSequence()
     {
         _isTransitioning = true;
@@ -75,7 +89,6 @@ public class CollisionHandler : MonoBehaviour
         }
         SceneManager.LoadScene(nextSceneIndex);
     }
-
     void ReloadLevel()
     {
         // reload the scene

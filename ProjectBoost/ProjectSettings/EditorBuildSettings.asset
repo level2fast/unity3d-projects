@@ -16,7 +16,7 @@ EditorBuildSettings:
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/FlyOverHorizontalObstacleScene.unity
-    guid: 0dd4ae1dd806b944bbbc05c0791bfb9a
+    guid: f8a2fffab8e57a8459426ef2dcbdc30a
   - enabled: 1
     path: Assets/Scenes/FlyOverVertObstacleScene.unity
     guid: 37effea81a35c564c929dc9850849efe

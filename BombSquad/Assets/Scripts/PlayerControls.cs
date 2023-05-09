@@ -9,20 +9,21 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float controlSpeed = 10.0f;
     [SerializeField] float xRange = 5.0f;
     [SerializeField] float yRange = 5.0f;
+    [SerializeField] float positionPitchFactor = -2.0f;
+    [SerializeField] float positionYawFactor = 2.0f;
+    [SerializeField] float controlPitchFactor = -15.0f;
+    [SerializeField] float controlRollFactor = -20.0f;
     float xThrow;
     float yThrow;
-
     float xOffset;
     float transformedXPos;
     float yOffset;
     float transformedYPos;
     float clampedXPos;
     float clampedYPos;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    float pitch = 0.0f; // rotates around x axis
+    float yaw = 0.0f;   // rotates around y axis
+    float roll = 0.0f;  // rotates around z axis
 
     private void OnEnable()
     {
@@ -38,8 +39,18 @@ public class PlayerControls : MonoBehaviour
     void Update()
     {
         TransformEuclideanCoord();
+        TransforRotationAngle();
     }
+    private void TransforRotationAngle()
+    {
+        float pitchDueToPosition = transform.localRotation.y * positionPitchFactor;
+        float pitchDueToControl = yThrow * controlPitchFactor;
+        pitch = pitchDueToPosition + pitchDueToControl;
+        yaw = transform.localPosition.x * positionYawFactor;
+        roll = xThrow * controlRollFactor;
 
+        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
     private void TransformEuclideanCoord()
     {
         // get player key press input 

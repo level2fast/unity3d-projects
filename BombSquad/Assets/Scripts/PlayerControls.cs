@@ -28,11 +28,13 @@ public class PlayerControls : MonoBehaviour
     private void OnEnable()
     {
         movement.Enable();
+        fire.Enable();
     }
 
     private void OnDisable()
     {
         movement.Disable();
+        fire.Disable();
     }
 
     // Update is called once per frame
@@ -40,6 +42,7 @@ public class PlayerControls : MonoBehaviour
     {
         TransformEuclideanCoord();
         TransforRotationAngle();
+        ProcessFiring();
     }
     private void TransforRotationAngle()
     {
@@ -71,5 +74,17 @@ public class PlayerControls : MonoBehaviour
 
         // move player position
         transform.localPosition = new Vector3(clampedXPos, clampedYPos);
+    }
+    private void ProcessFiring()
+    {
+        if (fire.IsPressed())
+        {
+            Debug.Log("Button pressed");
+        }
+        else
+        {
+            Debug.Log("No button pressed:" + fire.IsPressed());
+
+        }
     }
 }

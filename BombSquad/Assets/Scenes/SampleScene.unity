@@ -572,6 +572,16 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5455700976005595231, guid: 9bd3ea834e696c7498f0c88b11a9a548, type: 3}
   m_PrefabInstance: {fileID: 5455700974630689726}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1781220595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6325984192907076453, guid: 9bd3ea834e696c7498f0c88b11a9a548, type: 3}
+  m_PrefabInstance: {fileID: 5455700974630689726}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1882509469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7253448525289615767, guid: 9bd3ea834e696c7498f0c88b11a9a548, type: 3}
+  m_PrefabInstance: {fileID: 5455700974630689726}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2006817322
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,10 +642,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2369356795115799122, guid: 9bd3ea834e696c7498f0c88b11a9a548, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5455700974946857788, guid: 9bd3ea834e696c7498f0c88b11a9a548, type: 3}
       propertyPath: fire.m_Type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5455700974946857788, guid: 9bd3ea834e696c7498f0c88b11a9a548, type: 3}
+      propertyPath: Lasers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455700974946857788, guid: 9bd3ea834e696c7498f0c88b11a9a548, type: 3}
+      propertyPath: Lasers.Array.data[0]
+      value: 
+      objectReference: {fileID: 1882509469}
+    - target: {fileID: 5455700974946857788, guid: 9bd3ea834e696c7498f0c88b11a9a548, type: 3}
+      propertyPath: Lasers.Array.data[1]
+      value: 
+      objectReference: {fileID: 1781220595}
     - target: {fileID: 5455700974946857788, guid: 9bd3ea834e696c7498f0c88b11a9a548, type: 3}
       propertyPath: fire.m_ExpectedControlType
       value: Button

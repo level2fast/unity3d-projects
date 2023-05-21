@@ -1,16 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
+    [Header("General Setup Settings")]
     [SerializeField] InputAction movement;
     [SerializeField] InputAction fire;
+    [Tooltip("How fast ship moves up and down based on player input")]
     [SerializeField] float controlSpeed = 10.0f;
-    [SerializeField] float xRange = 5.0f;
-    [SerializeField] float yRange = 5.0f;
+    [Tooltip("How fast player moves horizontally")][SerializeField] float xRange = 5.0f;
+    [Tooltip("How fast player moves vertically")][SerializeField] float yRange = 5.0f;
+
+    [Header("Laser gun arrary")]
+    [Tooltip("Add all player lasers here")][SerializeField] GameObject[] Lasers;
+
+    [Header("Screen position based tuning")]
     [SerializeField] float positionPitchFactor = -2.0f;
     [SerializeField] float positionYawFactor = 2.0f;
+
+    [Header("Player input based tuning")]
     [SerializeField] float controlPitchFactor = -15.0f;
     [SerializeField] float controlRollFactor = -20.0f;
     float xThrow;
@@ -79,12 +89,20 @@ public class PlayerControls : MonoBehaviour
     {
         if (fire.IsPressed())
         {
-            Debug.Log("Button pressed");
+            SetLaserToActive(true);
         }
         else
         {
-            Debug.Log("No button pressed:" + fire.IsPressed());
+            SetLaserToActive(false);
+        }
+    }
 
+    private void SetLaserToActive(bool isActive)
+    {
+        foreach (GameObject laser in Lasers)
+        {
+            var emissionModule = laser.GetComponent<ParticleSystem>().emission;
+            emissionModule.enabled = isActive;
         }
     }
 }

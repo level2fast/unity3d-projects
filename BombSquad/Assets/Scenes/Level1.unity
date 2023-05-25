@@ -235,8 +235,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathVfx: {fileID: 3200836327345539238, guid: aa9a5d42edc48ad4db0fa9ea0203b239, type: 3}
+  hitVfx: {fileID: 3200836327345539238, guid: 97d91fdbf0c457f4482b1da3e49be74e, type: 3}
   parent: {fileID: 1857961174}
   scorePerHit: 10
+  hitPoints: 2
 --- !u!95 &266193091
 Animator:
   serializedVersion: 5
@@ -504,8 +506,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathVfx: {fileID: 3200836327345539238, guid: aa9a5d42edc48ad4db0fa9ea0203b239, type: 3}
+  hitVfx: {fileID: 3200836327345539238, guid: 97d91fdbf0c457f4482b1da3e49be74e, type: 3}
   parent: {fileID: 1857961174}
   scorePerHit: 10
+  hitPoints: 2
 --- !u!95 &315066683
 Animator:
   serializedVersion: 5
@@ -736,8 +740,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathVfx: {fileID: 3200836327345539238, guid: aa9a5d42edc48ad4db0fa9ea0203b239, type: 3}
+  hitVfx: {fileID: 3200836327345539238, guid: 97d91fdbf0c457f4482b1da3e49be74e, type: 3}
   parent: {fileID: 1857961174}
   scorePerHit: 10
+  hitPoints: 2
 --- !u!1 &674208193
 GameObject:
   m_ObjectHideFlags: 0
